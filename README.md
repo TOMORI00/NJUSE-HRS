@@ -1,6 +1,6 @@
 # HRS（Hotel Reservation System）-2020-SEⅡ
 
-本项目为NJUSE软件工程课程与计算Ⅱ课程项目,项目成员XX.
+本项目为NJUSE软件工程课程与计算Ⅱ课程项目,项目成员DQJ、CSH、LJL、XYX.
 
 项目的主要目的是运用软件工程开发一个互联网酒店预订系统,进行软件工程过程的实践
 
