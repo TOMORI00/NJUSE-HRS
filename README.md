@@ -20,29 +20,42 @@
 
    - 体系结构文档
    
-   - 人机交互设计文档//ATTENTION: 不一定有
-   
    - 详细设计文档
    
 - 软件测试
 
-   - 测试文档//ATTENTION: 待学习
+   - ...
    
 - ...
   
+文档版本号说明：v1.0以前为课程过程作业，之后版本为大作业开发版本
+   
 ---
 
 项目说明
-
-   - 项目使用Web开发,选择Vue作为前端框架、SpringBoot作为后端框架
    
    - 项目仅为课程学习项目,最终在IDEA+CHROME环境下正常运行即达到要求
    
-   - ...
+   - 设计到的框架与技术：
+   
+      - Vue：Javascript框架
 
----
-
-本文档维护记录
-|时间|编辑者|内容|
-|:-:|:-:|:-:|
-|2020/4/20|DQJ|初始化文档|
+            - VueX：Vue状态管理模式
+      
+      - axios：基于promise的HTTP库
+      
+         - promise：异步编程解决方案
+      
+      - npm：Node.JS包管理工具
+      
+         - Node.JS：服务端的JavaScript运行环境
+      
+      - Spring：J2EE应用框架
+      
+         - SpringBoot：简化升级的Spring框架
+      
+      - Tomcat：Web应用服务器
+      
+         - Servlet：Web服务器中间层程序
+      
+      - Mybatis：java持久层框架
