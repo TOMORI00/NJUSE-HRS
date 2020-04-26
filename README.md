@@ -22,6 +22,8 @@
    
    - 详细设计文档
    
+   - 设计开发管理文档
+   
 - 软件测试
 
    - ...
@@ -40,7 +42,7 @@
    
       - Vue：Javascript框架
 
-            - VueX：Vue状态管理模式
+         - VueX：Vue状态管理模式
       
       - axios：基于promise的HTTP库
       
