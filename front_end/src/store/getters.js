@@ -1,0 +1,45 @@
+const getters = {
+  //user
+  token: state => state.user.token,
+  userId: state => state.user.userId,
+  userInfo: state => state.user.userInfo,
+  userOrderList: state => state.user.userOrderList,
+  showDetailModalVisible: state => state.user.showDetailModalVisible,
+  showGradeHotelId: state => state.user.showGradeHotelId,
+  showGradeModalVisible:state=>state.user.showGradeModalVisible,
+  showDetailOrderId: state => state.user.showDetailOrderId,
+  userCreditList: state => state.user.userCreditList,
+  hotelListLoading: state => state.hotel.hotelListLoading,
+  hotelList: state => state.hotel.hotelList,
+  currentHotelInfo: state => state.hotel.currentHotelInfo,
+  currentHotelId: state => state.hotel.currentHotelId,
+  orderModalVisible: state => state.hotel.orderModalVisible,
+  currentOrderRoom: state => state.hotel.currentOrderRoom,
+  orderMatchCouponList: state => state.hotel.orderMatchCouponList,
+  rateOrderId:state=>state.user.rateOrderId,
+  //admin
+  managerList: state => state.admin.managerList,
+  staffList: state => state.admin.staffList,
+  addManagerModalVisible: state => state.admin.addManagerModalVisible,
+  addManagerParams: state => state.admin.addManagerParams,
+  addStaffParams: state => state.admin.addStaffParams,
+  addHotelModalVisible: state => state.admin.addHotelModalVisible,
+  addStaffModalVisible:state => state.admin.addStaffModalVisible,
+  //hotelManager
+  orderList: state => state.hotelManager.orderList,
+  addRoomModalVisible: state => state.hotelManager.addRoomModalVisible,
+  couponVisible: state => state.hotelManager.couponVisible,
+  addCouponVisible: state => state.hotelManager.addCouponVisible,
+  activeHotelId: state => state.hotelManager.activeHotelId,
+  couponList: state => state.hotelManager.couponList,
+  clientList: state => state.hotelManager.clientList,
+  //hotelStaff
+  hotelOrderList: state => state.frontDesk.hotelOrderList,
+  chargeHotelId: state => state.frontDesk.chargeHotelId,
+  thisHotelInfo: state => state.frontDesk.thisHotelInfo,
+  hotelCouponList: state => state.frontDesk.hotelCouponList,
+  addHotelCouponVisible:state=>state.frontDesk.addHotelCouponVisible,
+  addHotelRoomVisible: state => state.frontDesk.addHotelRoomVisible,
+  }
+  
+  export default getters
