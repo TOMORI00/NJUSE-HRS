@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.example.hotel.data.credit.CreditMapper">
+
+    <!--插入信用记录-->
+    <insert id="insertCreditRecord" parameterType="com.example.hotel.po.CreditRecord"
+            useGeneratedKeys="true" keyProperty="id">
+        insert into Credit(userId,orderId,recordTime,recordCredit,changeReason,creditResult)
+        values(#{userId},#{orderId},#{recordTime},#{recordCredit},#{changeReason},#{creditResult})
+    </insert>
+
+    <!--根据userid获取信用记录列表-->
+    <select id="selectCreditRecordById" resultMap="CreditRecord">
+        select * from Credit where userId=#{userid}
+    </select>
+
+    <!--根据userid改变其信用值-->
+    <update id="updateUserCredit" >
+        update User set credit=credit+#{changeCredit}
+        where id=#{userid}
+    </update>
+
+
+
+    <resultMap id="CreditRecord" type="com.example.hotel.po.CreditRecord">
+        <result column="id" property="id"></result>
+        <result column="userId" property="userId"></result>
+        <result column="orderId" property="orderId"></result>
+        <result column="recordTime" property="recordTime"></result>
+        <result column="recordCredit" property="recordCredit"></result>
+        <result column="changeReason" property="changeReason"></result>
+        <result column="creditResult" property="creditResult"></result>
+    </resultMap>
+</mapper>

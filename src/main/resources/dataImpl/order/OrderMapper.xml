@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.hotel.data.order.OrderMapper">
+
+    <select id="getAllOrders" resultMap="Order">
+        select * from OrderList
+    </select>
+    <select id="getUserOrders" resultMap="Order">
+        select * from OrderList where userId=#{userid}
+    </select>
+    <insert id="addOrder" parameterType="com.example.hotel.po.Order" useGeneratedKeys="true" keyProperty="id">
+        insert into OrderList(userId,hotelId,hotelName,checkInDate,checkOutDate,roomType,roomNum,peopleNum,haveChild,createDate,price,clientName,phoneNumber,orderState)
+        values(#{userId},#{hotelId},#{hotelName},#{checkInDate},#{checkOutDate},#{roomType},#{roomNum},#{peopleNum},#{haveChild},#{createDate},#{price},#{clientName},#{phoneNumber},#{orderState})
+    </insert>
+    <select id="getOrderById" resultMap="Order">
+        select * from OrderList where id=#{orderid}
+    </select>
+   <!--取消订单的数据库操作-->
+    <update id="annulOrder">
+        update OrderList set orderState="已撤销"
+        where id=#{orderid}
+    </update>
+    <!--执行订单的数据库操作-->
+    <update id="execOrder">
+        update OrderList set orderState="已入住"
+        where id=#{orderid}
+    </update>
+
+    <!--恢复订单数据库操作-->
+    <update id="restoreOrder">
+        update OrderList set orderState="已入住"
+        where id=#{orderid}
+    </update>
+
+    <!--获取酒店的所有订单-->
+    <select id="getHotelOrders" resultMap="Order">
+        select * from OrderList where hotelId=#{hotelid}
+    </select>
+
+    <!--退房的关于订单的数据库操作-->
+    <update id="checkoutOrder">
+        update OrderList set orderState="待评价"
+        where id=#{orderid}
+    </update>
+
+    <!--延迟入住-->
+    <update id="recheck">
+        update OrderList set orderState="已入住"
+        where id=#{orderid}
+    </update>
+
+    <!--逾期-->
+    <update id="overdue">
+        update OrderList set orderState="异常"
+        where id=#{orderid}
+    </update>
+
+    <update id="cancelAbnormalOrder">
+        update OrderList set orderState="已撤销"
+        where id=#{orderid}
+    </update>
+
+    <update id="finishOrder">
+        update OrderList set orderState="已完成"
+        where id=#{orderid}
+    </update>
+
+    <select id="getHotelFinishOrderNum" resultType="int">
+        select count(*) from OrderList
+        where hotelId=#{hotelid} and orderState="已完成"
+    </select>
+
+    <resultMap id="Order" type="com.example.hotel.po.Order">
+    </resultMap>
+</mapper>
