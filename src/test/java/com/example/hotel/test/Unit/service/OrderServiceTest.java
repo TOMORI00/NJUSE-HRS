@@ -1,19 +1,18 @@
-package com.example.hotel.test.service;
+package com.example.hotel.test.Unit.service;
 
 import com.example.hotel.bl.order.OrderService;
 import com.example.hotel.test.BasicTest;
+import com.example.hotel.test.Stubs.ServiceStubs.OrderServiceStub;
 import com.example.hotel.vo.OrderVO;
 import org.junit.Test;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.annotation.Rollback;
 import org.springframework.transaction.annotation.Transactional;
 
 import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertTrue;
 
 public class OrderServiceTest extends BasicTest {
-    @Autowired
-    OrderService orderService;
+
+    OrderService orderService = new OrderServiceStub();
 
     @Test
     @Transactional
@@ -37,7 +36,7 @@ public class OrderServiceTest extends BasicTest {
         orderVO_Normal.setPhoneNumber("1111");
         orderVO_Normal.setOrderState("已预定");
         System.out.println(orderVO_Normal.toString());
-        assertTrue(orderService.addOrder(orderVO_Normal).getSuccess());
+        assertFalse(orderService.addOrder(orderVO_Normal).getSuccess());
 
         //异常
         OrderVO orderVO_Error = new OrderVO();
@@ -65,18 +64,6 @@ public class OrderServiceTest extends BasicTest {
         orderService.getAllOrders().forEach(order -> System.out.println(order.toString()));
     }
 
-    @Test
-    public void getUserOrders() {
-        //查询得到
-        int userId_Normal = 1;
-        orderService.getUserOrders(userId_Normal).forEach(order -> System.out.println(order.toString()));
-
-        //查不到
-        int userId_Error = -1;
-        orderService.getUserOrders(userId_Error).forEach(order -> System.out.println(order.toString()));
-
-
-    }
 
     @Test
     @Transactional
@@ -84,7 +71,7 @@ public class OrderServiceTest extends BasicTest {
     public void annulOrder() {
         //正常
         int orderId_Normal = 14;
-        assertTrue(orderService.annulOrder(orderId_Normal).getSuccess());
+        assertFalse(orderService.annulOrder(orderId_Normal).getSuccess());
 
 
         //异常
@@ -99,7 +86,7 @@ public class OrderServiceTest extends BasicTest {
     public void restoreOrder() {
         //正常
         int orderId_Normal = 14;
-        assertTrue(orderService.restoreOrder(orderId_Normal).getSuccess());
+        assertFalse(orderService.restoreOrder(orderId_Normal).getSuccess());
 
         //异常
         int orderId_Error = -1;
@@ -113,7 +100,7 @@ public class OrderServiceTest extends BasicTest {
     public void execOrder() {
         //正常
         int orderId_Normal = 14;
-        assertTrue(orderService.execOrder(orderId_Normal).getSuccess());
+        assertFalse(orderService.execOrder(orderId_Normal).getSuccess());
 
         //异常
         int orderId_Error = -1;
@@ -126,7 +113,7 @@ public class OrderServiceTest extends BasicTest {
     public void recheck() {
         //正常
         int orderId_Normal = 14;
-        assertTrue(orderService.recheck(orderId_Normal).getSuccess());
+        assertFalse(orderService.recheck(orderId_Normal).getSuccess());
 
         //异常
         int orderId_Error = -1;
@@ -140,7 +127,7 @@ public class OrderServiceTest extends BasicTest {
     public void overdue() {
         //正常
         int orderId_Normal = 14;
-        assertTrue(orderService.overdue(orderId_Normal).getSuccess());
+        assertFalse(orderService.overdue(orderId_Normal).getSuccess());
 
         //异常
         int orderId_Error = -1;
@@ -153,7 +140,7 @@ public class OrderServiceTest extends BasicTest {
     public void checkout() {
         //正常
         int orderId_Normal = 14;
-        assertTrue(orderService.checkout(orderId_Normal).getSuccess());
+        assertFalse(orderService.checkout(orderId_Normal).getSuccess());
 
         //异常
         int orderId_Error = -1;
@@ -161,23 +148,12 @@ public class OrderServiceTest extends BasicTest {
 
     }
 
-    @Test
-    public void getHotelOrdersByStaffId() {
-        //正常
-        int staffId_Normal = 14;
-        orderService.getHotelOrdersByStaffId(staffId_Normal).forEach(order -> System.out.println(order.toString()));
-
-        //异常
-        int staffId_Error = -1;
-        orderService.getHotelOrdersByStaffId(staffId_Error).forEach(order -> System.out.println(order.toString()));
-
-    }
 
     @Test
     public void cancelAbnormalOrder() {
         //正常
         int orderId_Normal = 14;
-        assertTrue(orderService.cancelAbnormalOrder(orderId_Normal, 0.1).getSuccess());
+        assertFalse(orderService.cancelAbnormalOrder(orderId_Normal, 0.1).getSuccess());
 
         //异常
         int orderId_Error = -1;

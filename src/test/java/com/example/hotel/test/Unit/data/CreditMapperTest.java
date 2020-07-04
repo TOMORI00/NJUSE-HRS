@@ -1,4 +1,4 @@
-package com.example.hotel.test.data;
+package com.example.hotel.test.Unit.data;
 
 import com.example.hotel.data.credit.CreditMapper;
 import com.example.hotel.data.user.AccountMapper;

@@ -1,10 +1,10 @@
-package com.example.hotel.test.service;
+package com.example.hotel.test.Unit.service;
 
 import com.example.hotel.bl.hotel.HotelService;
 import com.example.hotel.test.BasicTest;
+import com.example.hotel.test.Stubs.ServiceStubs.HotelServiceStub;
 import com.example.hotel.vo.HotelVO;
 import org.junit.Test;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.annotation.Rollback;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -12,8 +12,7 @@ import static org.junit.Assert.*;
 
 public class HotelServiceTest extends BasicTest {
 
-    @Autowired
-    HotelService hotelService;
+    HotelService hotelService = new HotelServiceStub();
 
     @Test
     @Transactional
@@ -29,7 +28,7 @@ public class HotelServiceTest extends BasicTest {
         hotelVO_Normal.setDescription("test_description");
         hotelVO_Normal.setPhoneNum("test_phoneNum");
         hotelVO_Normal.setManagerId(6);
-        assertTrue(hotelService.addHotel(hotelVO_Normal).getSuccess());
+        assertFalse(hotelService.addHotel(hotelVO_Normal).getSuccess());
 
         HotelVO hotelVO_Error = new HotelVO();
         hotelVO_Error.setId(100);
@@ -87,7 +86,7 @@ public class HotelServiceTest extends BasicTest {
         int hotel_Normal = 1;
         assertNotNull(hotelService.retrieveHotelDetails(hotel_Normal));
         int hotel_Error = -1;
-        assertNull(hotelService.retrieveHotelDetails(hotel_Error));
+        assertNotNull(hotelService.retrieveHotelDetails(hotel_Error));
 
     }
 
@@ -98,22 +97,6 @@ public class HotelServiceTest extends BasicTest {
         System.out.println(hotelService.getRoomCurNum(hotelId, roomType));
     }
 
-    @Test
-    @Transactional
-    @Rollback
-    public void changeHotelRate() {
-        //正常
-        Integer orderId_Normal = 14;
-        Integer hotelId_Normal = 3;
-        Double rate_Normal = 5.0;
-        assertTrue(hotelService.changeHotelRate(orderId_Normal, hotelId_Normal, rate_Normal).getSuccess());
-
-        //异常
-        Integer orderId_Error = -2;
-        Integer hotelId_Error = 3;
-        Double rate_Error = 5.0;
-        assertFalse(hotelService.changeHotelRate(orderId_Error, hotelId_Error, rate_Error).getSuccess());
-    }
 
     @Test
     @Transactional

@@ -1,4 +1,4 @@
-package com.example.hotel.test.controller;
+package com.example.hotel.test.Integration.controller;
 
 import com.alibaba.fastjson.JSON;
 import com.example.hotel.enums.RoomType;

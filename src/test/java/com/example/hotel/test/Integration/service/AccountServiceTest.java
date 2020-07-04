@@ -1,4 +1,4 @@
-package com.example.hotel.test.service;
+package com.example.hotel.test.Integration.service;
 
 import com.example.hotel.bl.user.AccountService;
 import com.example.hotel.enums.UserType;
@@ -29,7 +29,7 @@ public class AccountServiceTest extends BasicTest {
         userVO_Normal.setPassword("123456");
         userVO_Normal.setUserName("test_register");
         userVO_Normal.setPhoneNumber("1111111111");
-        userVO_Normal.setCredit(100);
+        userVO_Normal.setCredit(100.0);
         userVO_Normal.setUserType(UserType.Client);
         ResponseVO responseVO_Normal = accountService.registerAccount(userVO_Normal);
         assertTrue(responseVO_Normal.getSuccess());
@@ -40,7 +40,7 @@ public class AccountServiceTest extends BasicTest {
         userVO_Error.setPassword("123456");
         userVO_Error.setUserName("test_register");
         userVO_Error.setPhoneNumber("1111111111");
-        userVO_Error.setCredit(100);
+        userVO_Error.setCredit(100.0);
         userVO_Error.setUserType(UserType.Client);
         ResponseVO responseVO_Error = accountService.registerAccount(userVO_Error);
         assertFalse(responseVO_Error.getSuccess());

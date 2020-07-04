@@ -1,4 +1,4 @@
-package com.example.hotel.test.service;
+package com.example.hotel.test.Integration.service;
 
 import com.example.hotel.bl.hotel.RoomService;
 import com.example.hotel.enums.RoomType;

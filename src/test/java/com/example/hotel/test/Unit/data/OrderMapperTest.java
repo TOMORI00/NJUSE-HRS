@@ -1,4 +1,4 @@
-package com.example.hotel.test.data;
+package com.example.hotel.test.Unit.data;
 
 import com.example.hotel.data.order.OrderMapper;
 import com.example.hotel.po.Order;
